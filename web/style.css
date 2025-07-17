@@ -1,0 +1,22 @@
+.hidden {
+    display: none;
+}
+
+body {
+    background-color: #353B3C;
+    color: #EEF0F2;
+    font-family: "Noto Sans";
+}
+#heading {
+    padding-bottom: 50px;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+#imposter {
+    color: red;
+}
