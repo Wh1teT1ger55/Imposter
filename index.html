@@ -13,27 +13,31 @@
         <form id="game-settings">
             <div>
                 <label for="player-count">Players:</label>
-                <select name="player-count" id="player-count">
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
+                <div class="custom-select">
+                    <select name="player-count" id="player-count">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <label for="imposter-count">Imposters:</label>
-                <select name="imposter-count" id="imposter-count">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
+                <div class="custom-select">
+                    <select name="imposter-count" id="imposter-count">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
             </div>    
                 
         </form>
@@ -41,10 +45,13 @@
         
     </div>
     <div id="in-game" class="center">
-        <p id="imposter" class="hidden">Du bist IMPOSTER</p>
-        <p id="crewmate" class="hidden">Du bist Crewmate</p>
-        <p id="word" ></p>
-        <button id="next" class="hidden, button-85" role="button" onclick="nextPlayer()">Next Player</button>
+        <div class="card card-red" id="card">
+            <p id="imposter">Du bist IMPOSTER</p>
+            <p id="crewmate">Du bist Crewmate</p>
+            <p id="word" ></p>
+        </div>
+        
+        <button id="next" class="button-85" role="button" onclick="nextPlayer()">Next Player</button>
     </div>
     <div id="after-game" class="hidden">
     </div>

@@ -9,9 +9,10 @@ body {
     padding: 10px;
 }
 
-#pre-game *{
-    padding: 10px;
+#start-game {
+  margin-top: 30px;
 }
+
 
 #heading {
     padding-bottom: 50px;
@@ -21,14 +22,6 @@ body {
   width: 50%;
   padding: 10px;
   text-align: center;
-}
-
-#imposter {
-    color: red;
-}
-
-#crewmate {
-    color: rgb(56, 162, 255);
 }
 
 
@@ -72,7 +65,7 @@ body {
   -webkit-filter: blur(5px);
   width: calc(100% + 4px);
   height: calc(100% + 4px);
-  animation: glowing-button-85 20s linear infinite;
+  animation: glowing-button-85 80s linear infinite;
   transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
@@ -107,4 +100,149 @@ body {
   left: 0;
   top: 0;
   border-radius: 10px;
+}
+
+select {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.custom-select {
+	position: relative;
+  display: inline-block;
+}
+.custom-select option {
+  border-radius: 10px;
+}
+
+
+.custom-select select {
+	appearance: none;
+	-webkit-appearance: none;
+  min-width: 50px;
+	font-size: 18px;
+	padding: 5px 10px 5px 10px;
+	background-color: #FFFFFF;
+	border: 0px solid #C4D1EB;
+	border-radius: 10px;
+	color: #000000;
+	cursor: pointer;
+	outline: none;
+}
+
+.custom-select select:focus {
+	background: #F2F2F2;
+	border: 0px solid #5A7EC7;
+	border-radius: 10px;
+}
+
+.custom-select::after {
+	content: "";
+	position: absolute;
+	pointer-events: none;
+	top: 50%;
+	right: 18px;
+	transform: translate(0, -50%);
+	width: 12px;
+	height: 12px;
+	background-color: #000000;
+	clip-path: polygon(8% 17%, 0% 25%, 50% 84%, 100% 25%, 92% 17%, 50% 65%);
+}
+
+
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 40vh;
+  --card-width: calc(var(--card-height) / 1.5);
+  --card-color: 86, 195, 238;
+}
+
+.card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* <-- Add this line */
+  font-size: 1.5em;
+  color: rgba(var(--card-color), 0);
+  cursor: pointer;
+  margin: auto ;
+  margin-bottom: 50px;
+}
+
+.card:active {
+  color: rgba(var(--card-color), 255);
+}
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 20px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+
+.card-red {
+  --card-color: 255, 93, 93
 }

@@ -4,6 +4,8 @@ let playerCount = 0;
 let nextPlayerI = 0;
 let wordCount = jsonData.length;
 
+
+
 // Wird durch "Start"-Button aufgerufen
 async function loadJSON() {
     const response = await fetch('data.json'); // Pfad zur JSON-Datei
@@ -21,11 +23,11 @@ function getRandomInt(min, max) {
 }
 
 function hideElement(id) {
-    document.getElementById(id).style.display = "none"; 
+    document.getElementById(id).classList.add("hidden"); 
 }
 
 function showElement(id) {
-    document.getElementById(id).style.display = "inline"; 
+    document.getElementById(id).classList.remove("hidden")
 }
 
 // Random Crew Wort welches in das Spielerverzeichnis (playerArr) hinzugefügt wird
@@ -51,12 +53,14 @@ function nextPlayer() {
         let activePlayer = JSON.parse(playerArr[nextPlayerI]);
         if ("crew" in activePlayer) {
             hideElement("imposter");
+            document.getElementById("card").classList.remove("card-red"); 
             showElement("crewmate");
             wordField.innerText = `Wort: ${activePlayer.crew}`;
             console.log("Wort:", activePlayer.crew);
         } else if ("imposter" in activePlayer) {
             hideElement("crewmate");
             showElement("imposter");
+            document.getElementById("card").classList.add("card-red"); 
             wordField.innerText = `Wort: ${activePlayer.imposter}`;
             console.log("Hilfswort:", activePlayer.imposter);
         }
@@ -72,11 +76,13 @@ function resetToDefault() {
     showElement("pre-game");
     hideElement("in-game");
     hideElement("after-game");
+    showElement("start-game");
 }
 
 // Allgemeine Spielfunktion / Main Funktion
 function startRound() {
-    hideElement("pre-game");     // Einstellungen werden ausgeblendet
+    hideElement("pre-game");
+    showElement("in-game")     // Einstellungen werden ausgeblendet
     let randomWordNum = getRandomInt(0, wordCount - 1);     // Random Nummer für "jsonData" Array --> Random Wort
     playerCount = parseInt(document.getElementById("player-count").value);      // Spieleranzahl aus Form auslesen
     console.log(playerCount);    
@@ -106,3 +112,10 @@ function startRound() {
     showElement("next")
     console.log(playerArr);        
 }
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    resetToDefault();
+});
