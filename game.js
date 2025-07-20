@@ -77,6 +77,9 @@ function resetToDefault() {
     hideElement("in-game");
     hideElement("after-game");
     showElement("start-game");
+    playerArr =[];
+    playerCount = 0;
+    nextPlayerI = 0;
 }
 
 // Allgemeine Spielfunktion / Main Funktion
