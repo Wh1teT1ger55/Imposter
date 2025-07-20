@@ -22,6 +22,10 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function element(id) {
+    return document.getElementById(id);
+}
+
 function hideElement(id) {
     document.getElementById(id).classList.add("hidden"); 
 }
@@ -47,8 +51,19 @@ function imposterWord(wordNum) {
     console.log("Hilfswort: " + randomHelp);
 }
 
+function showNextOnce() {
+    showElement("next");
+    element("card").removeEventListener('mouseup', showNextOnce);
+    element("card").removeEventListener('touchend', showNextOnce);
+}
+
 function nextPlayer() {
     let wordField = document.getElementById("word");
+    hideElement("next");
+
+    element("card").addEventListener('mouseup', showNextOnce);
+    element("card").addEventListener('touchend', showNextOnce);
+
     if (nextPlayerI >= 0) {
         let activePlayer = JSON.parse(playerArr[nextPlayerI]);
         if ("crew" in activePlayer) {
@@ -112,7 +127,6 @@ function startRound() {
         }
     }
     nextPlayer();
-    showElement("next")
     console.log(playerArr);        
 }
 
@@ -122,3 +136,8 @@ function startRound() {
 document.addEventListener("DOMContentLoaded", () => {
     resetToDefault();
 });
+
+
+
+    
+    
