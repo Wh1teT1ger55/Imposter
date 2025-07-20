@@ -19,7 +19,6 @@ body {
 }
 .center {
   margin: auto;
-  width: 50%;
   padding: 10px;
   text-align: center;
 }
@@ -159,12 +158,17 @@ select {
 }
 
 :root {
-  --card-height: 40vh;
+  --card-height: 60vh;
   --card-width: calc(var(--card-height) / 1.5);
   --card-color: 86, 195, 238;
 }
 
 .card {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  -webkit-tap-highlight-color: transparent;
+
   background: #191c29;
   width: var(--card-width);
   height: var(--card-height);

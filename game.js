@@ -61,7 +61,7 @@ function nextPlayer() {
             hideElement("crewmate");
             showElement("imposter");
             document.getElementById("card").classList.add("card-red"); 
-            wordField.innerText = `Wort: ${activePlayer.imposter}`;
+            wordField.innerText = `Hilfswort: ${activePlayer.imposter}`;
             console.log("Hilfswort:", activePlayer.imposter);
         }
         console.log("nextPlayerI:", nextPlayerI);
